@@ -1,7 +1,6 @@
-package com.appsdeveloperblog.estore.productsservice.core.event;
+package com.appsdeveloperblog.estore.productsservice.core.events;
 
 import lombok.Data;
-import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import java.math.BigDecimal;
 
