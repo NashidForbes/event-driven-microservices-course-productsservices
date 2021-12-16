@@ -43,13 +43,13 @@ public class ProductAggregate {
         // thank you BeanUtils!
         BeanUtils.copyProperties(createProductCommand, productCreatedEvent);
 
-        // publish events, to events handlers
+        // publish handlers, to handlers handlers
         // update the ProductAggregate state with the latest values
         AggregateLifecycle.apply(productCreatedEvent);
     }
     
     // use initialize the aggregate class with the latest information state
-    // avoid adding any business logic, use this events handler to update the
+    // avoid adding any business logic, use this handlers handler to update the
     // aggregate state.
     @EventSourcingHandler
     public void on(ProductCreatedEvent productCreatedEvent){

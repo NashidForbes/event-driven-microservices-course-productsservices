@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.estore.productsservice.rest;
+package com.appsdeveloperblog.estore.productsservice.command.rest;
 
 import com.appsdeveloperblog.estore.productsservice.command.CreateProductCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
@@ -9,13 +9,13 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/products")
-public class ProductsController {
+public class ProductsCommandController {
 
     private final Environment env;
     private final CommandGateway commandGateway;
 
     //@Autowired not needed since Spring 4.3
-    public ProductsController(Environment env, CommandGateway commandGateway) {
+    public ProductsCommandController(Environment env, CommandGateway commandGateway) {
         this.env = env;
         this.commandGateway = commandGateway;
     }

@@ -1,11 +1,10 @@
-package com.appsdeveloperblog.estore.productsservice.events;
+package com.appsdeveloperblog.estore.productsservice.core.handlers;
 
 import com.appsdeveloperblog.estore.productsservice.core.data.ProductEntity;
 import com.appsdeveloperblog.estore.productsservice.core.data.ProductsRepository;
 import com.appsdeveloperblog.estore.productsservice.core.events.ProductCreatedEvent;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 //Handles ProductEvents and initiates an action
