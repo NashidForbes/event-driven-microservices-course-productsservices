@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.estore.productsservice.query;
+package com.appsdeveloperblog.estore.productsservice.events;
 
 import com.appsdeveloperblog.estore.productsservice.core.data.ProductEntity;
 import com.appsdeveloperblog.estore.productsservice.core.data.ProductsRepository;
