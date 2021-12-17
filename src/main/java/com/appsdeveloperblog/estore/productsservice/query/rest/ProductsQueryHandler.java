@@ -2,6 +2,7 @@ package com.appsdeveloperblog.estore.productsservice.query.rest;
 
 import com.appsdeveloperblog.estore.productsservice.core.data.ProductEntity;
 import com.appsdeveloperblog.estore.productsservice.core.data.ProductsRepository;
+import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,9 @@ public class ProductsQueryHandler {
         this.productsRepository = productsRepository;
     }
 
+    // FindProductsQuery query is just a place holder parameter
+    // it seems
+    @QueryHandler
     public List<ProductRestModel> findProducts(FindProductsQuery query){
 
         List<ProductRestModel> productsRest = new ArrayList<>();

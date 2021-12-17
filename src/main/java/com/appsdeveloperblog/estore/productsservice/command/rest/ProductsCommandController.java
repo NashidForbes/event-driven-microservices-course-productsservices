@@ -39,7 +39,7 @@ public class ProductsCommandController {
         return returnValue;
     }
 
-    @GetMapping
+/*    @GetMapping
     public String getProduct() {
         return "HTTP GET Handled " + env.getProperty("local.server.port");
     }
@@ -52,5 +52,5 @@ public class ProductsCommandController {
     @DeleteMapping
     public String deleteProduct() {
         return "HTTP DELETE Handled";
-    }
+    }*/
 }

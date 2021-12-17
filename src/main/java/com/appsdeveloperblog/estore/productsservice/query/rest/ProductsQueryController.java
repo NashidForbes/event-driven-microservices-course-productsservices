@@ -15,6 +15,7 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductsQueryController {
 
+    // QueryGateway: The command bus implementation?
     @Autowired
     QueryGateway queryGateway;
 
