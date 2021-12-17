@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.estore.productsservice.command;
+package com.appsdeveloperblog.estore.productsservice.command.rest.models;
 
 import lombok.Builder;
 import lombok.Data;

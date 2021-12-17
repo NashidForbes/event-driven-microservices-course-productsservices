@@ -1,6 +1,7 @@
-package com.appsdeveloperblog.estore.productsservice.command.rest;
+package com.appsdeveloperblog.estore.productsservice.command.rest.controller;
 
-import com.appsdeveloperblog.estore.productsservice.command.CreateProductCommand;
+import com.appsdeveloperblog.estore.productsservice.command.rest.models.CreateProductCommand;
+import com.appsdeveloperblog.estore.productsservice.command.rest.models.CreateProductRestModel;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;

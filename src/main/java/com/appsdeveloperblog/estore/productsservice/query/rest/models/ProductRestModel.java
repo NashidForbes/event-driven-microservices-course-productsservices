@@ -1,12 +1,13 @@
-package com.appsdeveloperblog.estore.productsservice.command.rest;
+package com.appsdeveloperblog.estore.productsservice.query.rest.models;
 
 import lombok.Data;
 
 import java.math.BigDecimal;
 
 @Data
-public class CreateProductRestModel {
+public class ProductRestModel {
 
+    private String productId;
     private String title;
     private BigDecimal price;
     private Integer quantity;

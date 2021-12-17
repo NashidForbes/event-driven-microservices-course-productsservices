@@ -1,5 +1,6 @@
 package com.appsdeveloperblog.estore.productsservice.command;
 
+import com.appsdeveloperblog.estore.productsservice.command.rest.models.CreateProductCommand;
 import com.appsdeveloperblog.estore.productsservice.core.events.ProductCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -43,13 +44,13 @@ public class ProductAggregate {
         // thank you BeanUtils!
         BeanUtils.copyProperties(createProductCommand, productCreatedEvent);
 
-        // publish handlers, to handlers handlers
+        // publish handler, to handler handler
         // update the ProductAggregate state with the latest values
         AggregateLifecycle.apply(productCreatedEvent);
     }
     
     // use initialize the aggregate class with the latest information state
-    // avoid adding any business logic, use this handlers handler to update the
+    // avoid adding any business logic, use this handler handler to update the
     // aggregate state.
     @EventSourcingHandler
     public void on(ProductCreatedEvent productCreatedEvent){

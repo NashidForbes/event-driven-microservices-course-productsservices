@@ -1,6 +1,7 @@
-package com.appsdeveloperblog.estore.productsservice.query.rest;
+package com.appsdeveloperblog.estore.productsservice.query.rest.controller;
 
-import com.appsdeveloperblog.estore.productsservice.core.data.ProductEntity;
+import com.appsdeveloperblog.estore.productsservice.query.rest.models.FindProductsQuery;
+import com.appsdeveloperblog.estore.productsservice.query.rest.models.ProductRestModel;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
