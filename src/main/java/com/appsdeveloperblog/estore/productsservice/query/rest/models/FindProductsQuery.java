@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 @NoArgsConstructor
-public
-class FindProductsQuery {
+public class FindProductsQuery {
 
 }
