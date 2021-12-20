@@ -1,6 +1,7 @@
 package com.appsdeveloperblog.estore.productsservice.core.data;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import java.io.Serializable;
 @Entity
 @Table(name="productlookup")
 @Data
+@NoArgsConstructor
 public class ProductLookupEntity implements Serializable {
 
     private static final long serialVersionUID = -4350833891880621287L;
@@ -19,4 +21,7 @@ public class ProductLookupEntity implements Serializable {
     private String productId;
     @Column(unique = true)
     private String title;
+
+    public ProductLookupEntity(String productId, String title) {
+    }
 }
