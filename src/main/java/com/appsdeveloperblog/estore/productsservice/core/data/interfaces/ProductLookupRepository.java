@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import javax.persistence.Id;
 
 public interface ProductLookupRepository extends JpaRepository<ProductLookupEntity, String> {
-    ProductLookupEntity FindByProductIdOrTitle(String productId, String title);
+    ProductLookupEntity findByProductIdOrTitle(String productId, String title);
 }
