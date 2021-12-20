@@ -1,7 +1,7 @@
 package com.appsdeveloperblog.estore.productsservice.query.rest.handler;
 
 import com.appsdeveloperblog.estore.productsservice.core.data.ProductEntity;
-import com.appsdeveloperblog.estore.productsservice.core.data.ProductsRepository;
+import com.appsdeveloperblog.estore.productsservice.core.data.interfaces.ProductsRepository;
 import com.appsdeveloperblog.estore.productsservice.query.rest.models.FindProductsQuery;
 import com.appsdeveloperblog.estore.productsservice.query.rest.models.ProductRestModel;
 import org.axonframework.queryhandling.QueryHandler;
