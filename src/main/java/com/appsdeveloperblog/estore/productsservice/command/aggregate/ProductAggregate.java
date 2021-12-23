@@ -27,7 +27,7 @@ public class ProductAggregate {
     }
 
     @CommandHandler
-    public ProductAggregate(CreateProductCommand createProductCommand) {
+    public ProductAggregate(CreateProductCommand createProductCommand) throws Exception {
         // Validate Create Product Command
         if (createProductCommand.getPrice().compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Price cannot be less than or equal to zero");
@@ -47,6 +47,8 @@ public class ProductAggregate {
         // publish handler, to handler handler
         // update the ProductAggregate state with the latest values
         AggregateLifecycle.apply(productCreatedEvent);
+
+        if(true) throw new  Exception("An error took place in the CreateProductCommand @Command method");
     }
     
     // use initialize the aggregate class with the latest information state
