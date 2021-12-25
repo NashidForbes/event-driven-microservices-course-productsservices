@@ -48,7 +48,6 @@ public class ProductAggregate {
         // update the ProductAggregate state with the latest values
         AggregateLifecycle.apply(productCreatedEvent);
 
-        if(true) throw new  Exception("An error took place in the CreateProductCommand @Command method");
     }
     
     // use initialize the aggregate class with the latest information state
