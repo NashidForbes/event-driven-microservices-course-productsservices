@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.estore.productsservice.core.data;
+package com.appsdeveloperblog.estore.productsservice.core.data.domains;
 
 import lombok.Data;
 

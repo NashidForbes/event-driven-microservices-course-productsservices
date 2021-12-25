@@ -1,6 +1,6 @@
 package com.appsdeveloperblog.estore.productsservice.command.handlers;
 
-import com.appsdeveloperblog.estore.productsservice.core.data.ProductLookupEntity;
+import com.appsdeveloperblog.estore.productsservice.core.data.domains.ProductLookupEntity;
 import com.appsdeveloperblog.estore.productsservice.core.data.interfaces.ProductLookupRepository;
 import com.appsdeveloperblog.estore.productsservice.core.events.ProductCreatedEvent;
 import org.axonframework.config.ProcessingGroup;
