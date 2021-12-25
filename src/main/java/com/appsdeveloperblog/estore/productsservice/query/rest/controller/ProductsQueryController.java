@@ -1,7 +1,7 @@
 package com.appsdeveloperblog.estore.productsservice.query.rest.controller;
 
-import com.appsdeveloperblog.estore.productsservice.query.rest.models.FindProductsQuery;
-import com.appsdeveloperblog.estore.productsservice.query.rest.models.ProductRestModel;
+import com.appsdeveloperblog.estore.productsservice.query.models.FindProductsQuery;
+import com.appsdeveloperblog.estore.productsservice.query.models.ProductRestModel;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.beans.factory.annotation.Autowired;

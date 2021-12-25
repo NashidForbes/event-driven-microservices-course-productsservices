@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.estore.productsservice.query.rest.models;
+package com.appsdeveloperblog.estore.productsservice.query.models;
 
 import lombok.Builder;
 import lombok.Data;
