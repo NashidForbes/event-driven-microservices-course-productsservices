@@ -44,8 +44,9 @@ public class ProductAggregate {
         // thank you BeanUtils!
         BeanUtils.copyProperties(createProductCommand, productCreatedEvent);
 
-        // publish handler, to handler handler
-        // update the ProductAggregate state with the latest values
+        // apply "stages" event for publish, if no exceptions,
+        // staged object is published update the OrderAggregate
+        // state with the latest values
         AggregateLifecycle.apply(productCreatedEvent);
 
     }
