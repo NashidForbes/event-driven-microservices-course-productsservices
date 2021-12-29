@@ -3,6 +3,7 @@ package com.appsdeveloperblog.estore.productsservice.command.aggregate;
 import com.appsdeveloperblog.estore.productsservice.command.rest.models.CreateProductCommand;
 import com.appsdeveloperblog.estore.productsservice.core.events.ProductCreatedEvent;
 import com.appsdeveloperblog.estore.sagacoreapi.commands.ReserveProductCommand;
+import com.appsdeveloperblog.estore.sagacoreapi.events.ProductReservedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -46,7 +47,7 @@ public class ProductAggregate {
         BeanUtils.copyProperties(createProductCommand, productCreatedEvent);
 
         // apply "stages" event for publish, if no exceptions,
-        // staged object is published update the OrderAggregate
+        // staged object is published update the ProductAggregate
         // state with the latest values
         AggregateLifecycle.apply(productCreatedEvent);
 
@@ -57,6 +58,18 @@ public class ProductAggregate {
         if(this.quantity < reserveProductCommand.getQuantity()){
             throw new IllegalArgumentException("Insufficient number of items in stock");
         }
+
+        ProductReservedEvent productReservedEvent = ProductReservedEvent.builder()
+                .orderId(reserveProductCommand.getOrderId())
+                .productId(reserveProductCommand.getProductId())
+                .quantity(reserveProductCommand.getQuantity())
+                .userId(reserveProductCommand.getUserId())
+                .build();
+
+        // apply "stages" event for publish, if no exceptions,
+        // staged object is published update the ProductAggregate
+        // state with the latest values
+        AggregateLifecycle.apply(productReservedEvent);
     }
 
     // use initialize the aggregate class with the latest information state
@@ -68,5 +81,12 @@ public class ProductAggregate {
         this.price = productCreatedEvent.getPrice();
         this.title = productCreatedEvent.getTitle();
         this.quantity = productCreatedEvent.getQuantity();
+    }
+
+    @EventSourcingHandler
+    public void on(ProductReservedEvent productReservedEvent){
+        // subtract the current quantity in stock
+        // persist the quantity object in stock in the event store
+        this.quantity -= productReservedEvent.getQuantity();
     }
 }

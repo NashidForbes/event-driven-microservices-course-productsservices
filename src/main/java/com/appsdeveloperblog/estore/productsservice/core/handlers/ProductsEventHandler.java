@@ -3,6 +3,7 @@ package com.appsdeveloperblog.estore.productsservice.core.handlers;
 import com.appsdeveloperblog.estore.productsservice.core.data.domains.ProductEntity;
 import com.appsdeveloperblog.estore.productsservice.core.data.interfaces.ProductsRepository;
 import com.appsdeveloperblog.estore.productsservice.core.events.ProductCreatedEvent;
+import com.appsdeveloperblog.estore.sagacoreapi.events.ProductReservedEvent;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.messaging.interceptors.ExceptionHandler;
@@ -48,5 +49,13 @@ public class ProductsEventHandler {
 
         if(true) throw new Exception("Forcing exception in event handler class");
 
+    }
+
+    @EventHandler
+    public void on(ProductReservedEvent productReservedEvent){
+        // do a read to get the latest updated state on the product entity field "Quantity"
+        ProductEntity productEntity = productsRepository.findByProductId(productReservedEvent.getProductId());
+        productEntity.setQuantity(productReservedEvent.getQuantity());
+        productsRepository.save(productEntity);
     }
 }
