@@ -55,7 +55,7 @@ public class ProductAggregate {
     @CommandHandler
     public void handle(ReserveProductCommand reserveProductCommand){
         if(this.quantity < reserveProductCommand.getQuantity()){
-            throw new IllegalArgumentException("Insufficent number of items in stock");
+            throw new IllegalArgumentException("Insufficient number of items in stock");
         }
     }
 
