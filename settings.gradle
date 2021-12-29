@@ -6,3 +6,7 @@ pluginManagement {
     }
 }
 rootProject.name = 'ProductsService'
+
+include ':saga-core-api'
+project(':saga-core-api').projectDir = new File('../saga-core-api')
+
