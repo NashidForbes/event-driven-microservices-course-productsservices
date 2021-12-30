@@ -4,6 +4,7 @@ import com.appsdeveloperblog.estore.productsservice.core.data.domains.ProductEnt
 import com.appsdeveloperblog.estore.productsservice.core.data.interfaces.ProductsRepository;
 import com.appsdeveloperblog.estore.productsservice.core.events.ProductCreatedEvent;
 import com.appsdeveloperblog.estore.sagacoreapi.events.ProductReservedEvent;
+import lombok.extern.slf4j.Slf4j;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.messaging.interceptors.ExceptionHandler;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 //Handles ProductEvents and initiates an action
 // depending upon the event
+@Slf4j
 @Component
 @ProcessingGroup("product-group")
 public class ProductsEventHandler {
@@ -57,5 +59,8 @@ public class ProductsEventHandler {
         ProductEntity productEntity = productsRepository.findByProductId(productReservedEvent.getProductId());
         productEntity.setQuantity(productReservedEvent.getQuantity());
         productsRepository.save(productEntity);
+
+        log.info("ProductReservedEvent handled for productId: " + productReservedEvent.getProductId() +
+                " and orderId: " + productReservedEvent.getOrderId());
     }
 }
