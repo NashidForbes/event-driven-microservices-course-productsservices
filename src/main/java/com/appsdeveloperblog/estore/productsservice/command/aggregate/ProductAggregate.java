@@ -88,6 +88,10 @@ public class ProductAggregate {
         AggregateLifecycle.apply(productReservationCancelledEvent);
     }
 
+    @EventSourcingHandler
+    public void on(ProductReservationCancelledEvent productReservationCancelledEvent){
+        this.quantity += productReservationCancelledEvent.getQuantity();
+    }
 
     // use initialize the aggregate class with the latest information state
     // avoid adding any business logic, use this handler handler to update the

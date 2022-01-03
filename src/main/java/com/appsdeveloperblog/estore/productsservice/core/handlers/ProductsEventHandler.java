@@ -3,6 +3,7 @@ package com.appsdeveloperblog.estore.productsservice.core.handlers;
 import com.appsdeveloperblog.estore.productsservice.core.data.domains.ProductEntity;
 import com.appsdeveloperblog.estore.productsservice.core.data.interfaces.ProductsRepository;
 import com.appsdeveloperblog.estore.productsservice.core.events.ProductCreatedEvent;
+import com.appsdeveloperblog.estore.sagacoreapi.events.ProductReservationCancelledEvent;
 import com.appsdeveloperblog.estore.sagacoreapi.events.ProductReservedEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.config.ProcessingGroup;
@@ -60,5 +61,15 @@ public class ProductsEventHandler {
 
         log.info("ProductReservedEvent handled for productId: " + productReservedEvent.getProductId() +
                 " and orderId: " + productReservedEvent.getOrderId());
+    }
+
+    @EventHandler
+    public void on(ProductReservationCancelledEvent productReservationCancelledEvent){
+        ProductEntity currentlyStoredProduct = productsRepository.findByProductId(productReservationCancelledEvent.getProductId());
+        int newQuantity = productReservationCancelledEvent.getQuantity() + productReservationCancelledEvent.getQuantity();
+        // adding the currently reserved product back into the database to restore stock quantity.
+        currentlyStoredProduct.setQuantity(newQuantity);
+
+        productsRepository.save(currentlyStoredProduct);
     }
 }
