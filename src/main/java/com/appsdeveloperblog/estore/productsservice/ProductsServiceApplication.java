@@ -4,7 +4,6 @@ import com.appsdeveloperblog.estore.productsservice.command.interceptors.CreateP
 import com.appsdeveloperblog.estore.productsservice.core.handlers.errors.ProductsServiceEventsErrorHandler;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.config.EventProcessingConfigurer;
-import org.axonframework.eventhandling.PropagatingErrorHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,7 +27,7 @@ public class ProductsServiceApplication {
     // Register ListenerInvocationErrorHandler for rolling back transactions
     // as part of processing group product-group"
     @Autowired
-    public void configure(EventProcessingConfigurer config){
+    public void configure(EventProcessingConfigurer config) {
         config.registerListenerInvocationErrorHandler("product-group",
                 conf -> new ProductsServiceEventsErrorHandler());
 
