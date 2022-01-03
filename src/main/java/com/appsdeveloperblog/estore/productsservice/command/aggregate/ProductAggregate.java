@@ -2,6 +2,7 @@ package com.appsdeveloperblog.estore.productsservice.command.aggregate;
 
 import com.appsdeveloperblog.estore.productsservice.command.models.CreateProductCommand;
 import com.appsdeveloperblog.estore.productsservice.core.events.ProductCreatedEvent;
+import com.appsdeveloperblog.estore.sagacoreapi.commands.CancelProductReservationCommand;
 import com.appsdeveloperblog.estore.sagacoreapi.commands.ReserveProductCommand;
 import com.appsdeveloperblog.estore.sagacoreapi.events.ProductReservedEvent;
 import org.axonframework.commandhandling.CommandHandler;
@@ -71,6 +72,12 @@ public class ProductAggregate {
         // state with the latest values
         AggregateLifecycle.apply(productReservedEvent);
     }
+
+    @CommandHandler
+    public void handle(CancelProductReservationCommand cancelProductReservationCommand){
+
+    }
+
 
     // use initialize the aggregate class with the latest information state
     // avoid adding any business logic, use this handler handler to update the
