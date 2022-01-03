@@ -1,6 +1,6 @@
 package com.appsdeveloperblog.estore.productsservice.command.aggregate;
 
-import com.appsdeveloperblog.estore.productsservice.command.rest.models.CreateProductCommand;
+import com.appsdeveloperblog.estore.productsservice.command.models.CreateProductCommand;
 import com.appsdeveloperblog.estore.productsservice.core.events.ProductCreatedEvent;
 import com.appsdeveloperblog.estore.sagacoreapi.commands.ReserveProductCommand;
 import com.appsdeveloperblog.estore.sagacoreapi.events.ProductReservedEvent;

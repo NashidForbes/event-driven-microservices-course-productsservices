@@ -1,6 +1,6 @@
 package com.appsdeveloperblog.estore.productsservice.command.interceptors;
 
-import com.appsdeveloperblog.estore.productsservice.command.rest.models.CreateProductCommand;
+import com.appsdeveloperblog.estore.productsservice.command.models.CreateProductCommand;
 import com.appsdeveloperblog.estore.productsservice.core.data.domains.ProductLookupEntity;
 import com.appsdeveloperblog.estore.productsservice.core.data.interfaces.ProductLookupRepository;
 import lombok.extern.slf4j.Slf4j;
