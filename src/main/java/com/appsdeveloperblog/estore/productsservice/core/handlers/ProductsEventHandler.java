@@ -56,9 +56,12 @@ public class ProductsEventHandler {
     public void on(ProductReservedEvent productReservedEvent){
         // do a read to get the latest updated state on the product entity field "Quantity"
         ProductEntity productEntity = productsRepository.findByProductId(productReservedEvent.getProductId());
+        log.debug("ProductReserved: Current product quantity " + productEntity.getQuantity());
+
         productEntity.setQuantity(productReservedEvent.getQuantity());
         productsRepository.save(productEntity);
 
+        log.debug("ProductReserved: New product quantity " + productEntity.getQuantity());
         log.info("ProductReservedEvent handled for productId: " + productReservedEvent.getProductId() +
                 " and orderId: " + productReservedEvent.getOrderId());
     }
@@ -66,10 +69,14 @@ public class ProductsEventHandler {
     @EventHandler
     public void on(ProductReservationCancelledEvent productReservationCancelledEvent){
         ProductEntity currentlyStoredProduct = productsRepository.findByProductId(productReservationCancelledEvent.getProductId());
+
+        log.debug("ProductReserved: Current product quantity " + currentlyStoredProduct.getQuantity());
+
         int newQuantity = productReservationCancelledEvent.getQuantity() + productReservationCancelledEvent.getQuantity();
         // adding the currently reserved product back into the database to restore stock quantity.
         currentlyStoredProduct.setQuantity(newQuantity);
 
         productsRepository.save(currentlyStoredProduct);
+        log.debug("ProductReserved: New product quantity " + currentlyStoredProduct.getQuantity());
     }
 }
