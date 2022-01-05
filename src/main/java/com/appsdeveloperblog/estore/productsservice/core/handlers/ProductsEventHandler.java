@@ -8,6 +8,7 @@ import com.appsdeveloperblog.estore.sagacoreapi.events.ProductReservedEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
+import org.axonframework.eventhandling.ResetHandler;
 import org.axonframework.messaging.interceptors.ExceptionHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -78,5 +79,11 @@ public class ProductsEventHandler {
 
         productsRepository.save(currentlyStoredProduct);
         log.debug("ProductReserved: New product quantity " + currentlyStoredProduct.getQuantity());
+    }
+
+    // Clear or initialize the products database table when doing replays from event store
+    @ResetHandler
+    public void reset(){
+        productsRepository.deleteAll();
     }
 }
