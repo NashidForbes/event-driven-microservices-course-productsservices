@@ -15,7 +15,7 @@ import org.springframework.beans.BeanUtils;
 
 import java.math.BigDecimal;
 
-@Aggregate
+@Aggregate(snapshotTriggerDefinition = "productSnapShotTriggerDefinition")
 public class ProductAggregate {
 
     // associate the dispatch command e.g. CreateProductCommand class
