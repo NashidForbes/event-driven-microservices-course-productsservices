@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.estore.productsservice.command.rest.controller;
+package com.appsdeveloperblog.estore.productsservice.command.rest.controllers;
 
 import com.appsdeveloperblog.estore.productsservice.command.models.CreateProductCommand;
 import com.appsdeveloperblog.estore.productsservice.command.models.CreateProductRestModel;
